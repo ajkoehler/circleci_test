@@ -7,7 +7,7 @@ orbs:
 jobs:
   packer-example:
     executor: packer/default
-      steps: 
+      steps:
         - checkout
         - validate:
             template: packer.json
