@@ -1,16 +1,11 @@
-version: 2.1
-orbs:
-  packer: salaxander/packer@0.0.3
+version: 2
 jobs:
-  packer-example:
-    executor: packer/default
+  validate:
+    docker:
+      - image: hashicorp/packer:1.1.1
+    working_directory: ~/
     steps:
       - checkout
-      - build:
-          template: packer.json
-          args: '-var aws_region=us-east-1'
-workflows:
-  version: 2
-  packer:
-    jobs:
-      - packer-example
+      - run:
+          name: Validate base
+          command: packer validate ./packer.json
