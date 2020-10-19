@@ -6,8 +6,14 @@ orbs:
 
 jobs:
   packer-example:
-    steps: 
-      - checkout
-      - validate:
-          template: packer.json
-          args: '-var aws_region=us-east-1'
+    executor: packer/default
+      steps: 
+        - checkout
+        - validate:
+            template: packer.json
+            args: '-var aws_region=us-east-1'
+workflows:
+  version: 2
+  packer:
+    jobs:
+      - packer-example
