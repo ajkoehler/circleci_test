@@ -1,17 +1,14 @@
-# Use the latest 2.1 version of CircleCI pipeline process engine. See: https://circleci.com/docs/2.0/configuration-reference
 version: 2.1
-# Orchestrate or schedule a set of jobs
 orbs:
-  packer: salaxnder/packer@0.0.3
-
+  packer: salaxander/packer@0.0.3
 jobs:
   packer-example:
     executor: packer/default
-      steps:
-        - checkout
-        - validate:
-            template: packer.json
-            args: '-var aws_region=us-east-1'
+    steps:
+      - checkout
+      - validate:
+          template: packer.json
+          args: '-var aws_region=us-east-1'
 workflows:
   version: 2
   packer:
