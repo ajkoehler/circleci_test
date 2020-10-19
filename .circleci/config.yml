@@ -6,7 +6,7 @@ jobs:
     executor: packer/default
     steps:
       - checkout
-      - validate:
+      - build:
           template: packer.json
           args: '-var aws_region=us-east-1'
 workflows:
